@@ -1,6 +1,6 @@
 const searchWordFilter = require('../filter/ex5.js');
 
-xdescribe('filter - exercice 5', () => {
+describe('filter - exercice 5', () => {
 
   test('searchWordFilter', () => {
     expect(searchWordFilter([
@@ -10,12 +10,12 @@ xdescribe('filter - exercice 5', () => {
       'Revenge of the Pink Panther',
       'Star Wars: Episode I - The Phantom Menace',
       'Star Wars: Episode II - Attack of the Clones',
-      'Star Wars: Episode III - Revenge of the Sith'
+      'Star Wars: Episode III - revenge of the Sith'
     ], 'revenge'))
     .toEqual([
       'Revenge of the Nerds',
       'Revenge of the Pink Panther',
-      'Star Wars: Episode III - Revenge of the Sith'
+      'Star Wars: Episode III - revenge of the Sith'
     ]);
   });
 

@@ -14,8 +14,8 @@ pour chaque campus gardé, un objet sous la forme : { VILLE: NB_ELEVES }.
 
 Arguments en entrée:
 
-1. Tableau des campus:
-[
+1. Tableau des campus:*/
+const campus= [
   { city: 'Bordeaux',
     curriculums: [
       { name: 'PHP/Symfony', numStudents: 12 },
@@ -43,14 +43,51 @@ Arguments en entrée:
   }
 ]
 
-2. Nom du cursus: 'PHP/Symfony'
+/*2. Nom du cursus: 'PHP/Symfony'
 
 Sortie attendue:
   [{ Bordeaux: 12 }, { Lille: 12 }]
 
 */
 
-function getStudentsPerCurriculum(campuses, curriculumName) {
+// retourne un tableau des objets contenant 'lang'
+const getLang = (arr, lang) => {
+  const table = [...arr]
+  return table.filter(x => x.name.includes(lang)) 
 }
+
+// retourne obj si contient lang, rien sinon
+const getCity = (obj, lang) =>{
+  let objBis;
+ // console.log(obj.curriculums )
+ //console.log(getLang(obj.curriculums, lang))
+  if (getLang(obj.curriculums, lang).length !== 0){
+     objBis =  obj
+    }    
+  //console.log(objBis)
+   return objBis
+}
+/*console.log(getCity({ city: 'Bordeaux',
+curriculums: 
+   [
+    { name: 'PHP/Symfony', numStudents: 12 },
+    { name: 'JS/React', numStudents: 16 }
+  ]}
+, 'JS/React' ))*/
+
+function getStudentsPerCurriculum(campuses, curriculumName) {
+ let resultInt = {};
+ let result  = []
+ resultInt = campuses.map(x => getCity(x, curriculumName)).filter(x => x)
+ result = resultInt.map(x => ({
+   [x.city] : getLang(x.curriculums, curriculumName)[0].numStudents
+}))
+
+
+console.log(result)
+return result
+}
+
+getStudentsPerCurriculum(campus,'JS/React' )
 
 module.exports = getStudentsPerCurriculum;
