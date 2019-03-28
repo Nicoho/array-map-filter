@@ -92,7 +92,7 @@ function getActivitiesMembers(activities, persons) {
   return result
 }
 
-console.log(getActivitiesMembers(act, tab))
+
 
 
 // Ne pas modifier l'export
